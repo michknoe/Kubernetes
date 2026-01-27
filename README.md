@@ -1,99 +1,105 @@
+
 # Kubernetes
 
-# Kubernetes Basics – Tutorial Walkthrough (Script Style)
+## Kubernetes Basics – Tutorial Walkthrough (Script Style)
 
-Dieses README folgt dem offiziellen Kubernetes Basics Tutorial:
+This README follows the official Kubernetes Basics Tutorial:
 https://kubernetes.io/docs/tutorials/kubernetes-basics/
 
-Alle Schritte sind in der Reihenfolge des Tutorials aufgebaut.
-Erklärungen stehen als Kommentare, Befehle sind korrekt als bash formatiert.
+All steps are structured in the order of the tutorial.
 
 ---
 
-## 1. Cluster & kubectl überprüfen
+
+## 1. Check Cluster & kubectl
 
 ```
-# Prüfen der kubectl Client- und Server-Version
+# Check the kubectl client and server version
 kubectl version
 
-# Anzeigen aller Nodes im Cluster
+# Show all nodes in the cluster
 kubectl get nodes
 ```
 
-## 2. Deployment erstellen
+
+## 2. Create a Deployment
 ```
-# Erstellen eines Deployments mit dem Beispiel-Container
+# Create a deployment with the sample container
 kubectl create deployment kubernetes-bootcamp \
   --image=gcr.io/google-samples/kubernetes-bootcamp:v1
 
-# Anzeigen aller Deployments
+# Show all deployments
 kubectl get deployments
 
-# Anzeigen der durch das Deployment erzeugten Pods
+# Show the pods created by the deployment
 kubectl get pods
-
 ```
 
-## 3. Cluster & Anwendung erkunden
+
+## 3. Explore Cluster & Application
 ```
-# Starten eines lokalen Proxys zur Kubernetes API
+# Start a local proxy to the Kubernetes API
 kubectl proxy
 
-# (In einem zweiten Terminal)
-# Abfrage der Kubernetes API-Version über den Proxy
+# (In a second terminal)
+# Query the Kubernetes API version via the proxy
 curl http://localhost:8001/version
 ```
 
 
-## 4. Anwendung über einen Service verfügbar machen
+
+## 4. Expose Application via a Service
 ```
-# Exponieren des Deployments als Service
+# Expose the deployment as a service
 kubectl expose deployment kubernetes-bootcamp \
   --type=LoadBalancer \
   --port=8080
 
-# Anzeigen aller Services
+# Show all services
 kubectl get services
 
 # (Optional)
-# Anzeigen aller Ressourcen im Namespace
+# Show all resources in the namespace
 kubectl get all
 ```
 
-### 5. Deployment skalieren
+
+### 5. Scale the Deployment
 ```
-# Skalieren des Deployments auf 3 Replikas
+# Scale the deployment to 3 replicas
 kubectl scale deployment kubernetes-bootcamp --replicas=3
 
-# Überprüfen der laufenden Pods
+# Check the running pods
 kubectl get pods
 ```
 
-### 6. Deployment aktualisieren (Rolling Update)
+
+### 6. Update the Deployment (Rolling Update)
 ```
-# Aktualisieren des Container-Images auf Version v2
+# Update the container image to version v2
 kubectl set image deployment/kubernetes-bootcamp \
   kubernetes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v2
 
-# Überprüfen der Pods nach dem Rolling Update
+# Check the pods after the rolling update
 kubectl get pods
 ```
 
-7. Aufräumen der Ressourcen
+
+7. Clean Up Resources
 ```
-# Löschen des Deployments (inkl. Pods)
+# Delete the deployment (including pods)
 kubectl delete deployment kubernetes-bootcamp
 
-# Löschen des Services
+# Delete the service
 kubectl delete service kubernetes-bootcamp
-
 ```
 
-### 8. (Optional) Namespace-übergreifende Übersicht
+
+### 8. (Optional) Cross-Namespace Overview
 ```
-# Anzeigen aller Pods in allen Namespaces
+# Show all pods in all namespaces
 kubectl get pods --all-namespaces
 
-# Anzeigen aller Deployments in allen Namespaces
+# Show all deployments in all namespaces
 kubectl get deployments --all-namespaces
 ```
