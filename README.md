@@ -1,7 +1,7 @@
 
 # Kubernetes
 
-## Kubernetes Basics – Tutorial Walkthrough (Script Style)
+## Kubernetes Basics – Tutorial Walkthrough
 
 This README follows the official Kubernetes Basics Tutorial:
 https://kubernetes.io/docs/tutorials/kubernetes-basics/
