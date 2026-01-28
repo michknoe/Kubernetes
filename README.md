@@ -41,10 +41,13 @@ kubectl get pods
 
 ```
 # If a local image shall be deployed 
+# Build your docker file 
+docker build -t <docker_image_name> . 
+
 # Create a deployment.yaml file 
 kubectl apply -f deployment.yaml
 
-
+```
 3. Explore Cluster & Application
 ```
 # Start a local proxy to the Kubernetes API
