@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-container
+        image: example_image:v1.0.0
+        imagePullPolicy: Never # Prevents K8s from trying to pull from a remote registry
+        ports:
+        - containerPort: 8080

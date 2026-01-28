@@ -10,8 +10,12 @@ All steps are structured in the order of the tutorial.
 
 ---
 
+1. Start Minikube 
+```
+minikube start
+```
 
-## 1. Check Cluster & kubectl
+1. Check Cluster & kubectl
 
 ```
 # Check the kubectl client and server version
@@ -22,7 +26,7 @@ kubectl get nodes
 ```
 
 
-## 2. Create a Deployment
+2. Create a Deployment
 ```
 # Create a deployment with the sample container
 kubectl create deployment kubernetes-bootcamp \
@@ -36,7 +40,7 @@ kubectl get pods
 ```
 
 
-## 3. Explore Cluster & Application
+3. Explore Cluster & Application
 ```
 # Start a local proxy to the Kubernetes API
 kubectl proxy
@@ -48,7 +52,7 @@ curl http://localhost:8001/version
 
 
 
-## 4. Expose Application via a Service
+4. Expose Application via a Service
 ```
 # Expose the deployment as a service
 kubectl expose deployment kubernetes-bootcamp \
@@ -64,7 +68,7 @@ kubectl get all
 ```
 
 
-### 5. Scale the Deployment
+5. Scale the Deployment
 ```
 # Scale the deployment to 3 replicas
 kubectl scale deployment kubernetes-bootcamp --replicas=3
@@ -74,7 +78,7 @@ kubectl get pods
 ```
 
 
-### 6. Update the Deployment (Rolling Update)
+6. Update the Deployment (Rolling Update)
 ```
 # Update the container image to version v2
 kubectl set image deployment/kubernetes-bootcamp \
@@ -95,11 +99,20 @@ kubectl delete service kubernetes-bootcamp
 ```
 
 
-### 8. (Optional) Cross-Namespace Overview
+8. (Optional) Cross-Namespace Overview
 ```
 # Show all pods in all namespaces
 kubectl get pods --all-namespaces
 
 # Show all deployments in all namespaces
 kubectl get deployments --all-namespaces
+```
+
+9. Stop and Delete Minikube VM 
+```
+# Stop the Minikube cluster 
+minikube stop
+
+# Optionally, delete the Minikube VM 
+minikube delete 
 ```
