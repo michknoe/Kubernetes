@@ -39,6 +39,11 @@ kubectl get deployments
 kubectl get pods
 ```
 
+```
+# If a local image shall be deployed 
+# Create a deployment.yaml file 
+kubectl apply -f deployment.yaml
+
 
 3. Explore Cluster & Application
 ```
