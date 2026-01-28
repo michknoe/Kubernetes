@@ -15,7 +15,7 @@ All steps are structured in the order of the tutorial.
 minikube start
 ```
 
-1. Check Cluster & kubectl
+2. Check Cluster & kubectl
 
 ```
 # Check the kubectl client and server version
@@ -26,7 +26,7 @@ kubectl get nodes
 ```
 
 
-2. Create a Deployment
+3. Create a Deployment
 ```
 # Create a deployment with the sample container
 kubectl create deployment kubernetes-bootcamp \
@@ -48,7 +48,7 @@ docker build -t <docker_image_name> .
 kubectl apply -f deployment.yaml
 
 ```
-3. Explore Cluster & Application
+4. Explore Cluster & Application
 ```
 # Start a local proxy to the Kubernetes API
 kubectl proxy
@@ -60,7 +60,7 @@ curl http://localhost:8001/version
 
 
 
-4. Expose Application via a Service
+5. Expose Application via a Service
 ```
 # Expose the deployment as a service
 kubectl expose deployment kubernetes-bootcamp \
@@ -76,7 +76,7 @@ kubectl get all
 ```
 
 
-5. Scale the Deployment
+6. Scale the Deployment
 ```
 # Scale the deployment to 3 replicas
 kubectl scale deployment kubernetes-bootcamp --replicas=3
@@ -86,7 +86,7 @@ kubectl get pods
 ```
 
 
-6. Update the Deployment (Rolling Update)
+7. Update the Deployment (Rolling Update)
 ```
 # Update the container image to version v2
 kubectl set image deployment/kubernetes-bootcamp \
@@ -97,7 +97,7 @@ kubectl get pods
 ```
 
 
-7. Clean Up Resources
+8. Clean Up Resources
 ```
 # Delete the deployment (including pods)
 kubectl delete deployment kubernetes-bootcamp
@@ -107,7 +107,7 @@ kubectl delete service kubernetes-bootcamp
 ```
 
 
-8. (Optional) Cross-Namespace Overview
+9. (Optional) Cross-Namespace Overview
 ```
 # Show all pods in all namespaces
 kubectl get pods --all-namespaces
@@ -116,7 +116,7 @@ kubectl get pods --all-namespaces
 kubectl get deployments --all-namespaces
 ```
 
-9. Stop and Delete Minikube VM 
+10. Stop and Delete Minikube VM 
 ```
 # Stop the Minikube cluster 
 minikube stop
